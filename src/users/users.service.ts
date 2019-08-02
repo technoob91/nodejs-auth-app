@@ -19,4 +19,10 @@ export class UsersService {
   async findAll(): Promise<User[]> {
     return this.userRepository.find();
   }
+
+  async create(user: User) {
+    const res = this.userRepository.create(user);
+    console.log(res);
+    return null;
+  }
 }

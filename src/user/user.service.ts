@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class UsersService {
+export class UserService {
   private readonly users: User[];
 
   constructor(
@@ -13,7 +13,7 @@ export class UsersService {
     ) {}
 
   async findOne(email: string): Promise<User | undefined> {
-    return this.userRepository.findOne({ email });
+    return await this.userRepository.findOne({ email });
   }
 
   async findAll(): Promise<User[]> {
@@ -21,8 +21,7 @@ export class UsersService {
   }
 
   async create(user: User) {
-    const res = this.userRepository.create(user);
-    console.log(res);
-    return null;
+    const res = await this.userRepository.save(user);
+    return res;
   }
 }

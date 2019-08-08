@@ -1,13 +1,14 @@
 {
-  "type": "postgressql",
+  "type": "postgres",
   "host": "localhost",
-  "port": 3306,
+  "port": 5432,
   "username": "postgres",
   "password": "root",
   "database": "nest_auth_dev",
   "entities": ["src/**/*.entity{.ts,.js}"],
   "synchronize": true,
-  "migrations": ["database/migrations/*.js"],
+  "logger": "all",
+  "migrations": ["database/migrations/*.ts"],
   "cli": { 
     "migrationsDir": "database/migrations"
   }

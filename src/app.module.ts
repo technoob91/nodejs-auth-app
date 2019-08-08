@@ -10,7 +10,16 @@ import { Connection } from 'typeorm';
   imports: [
     AuthModule,
     UserModule,
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      entities: ['src/**/*.entity{.ts,.js}'],
+      synchronize: true,
+      migrations: ['database/migrations/*.ts'],
+      cli: {
+        migrationsDir: 'database/migrations',
+      },
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
